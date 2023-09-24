@@ -9,23 +9,32 @@ class Solution
     public:
     //Function is to check whether two strings are anagram of each other or not.
    bool isAnagram(string a, string b) {
-    if (a.size() != b.size())
+    if (a.length() != b.length()) {
         return false;
-
-    int count[26] = {0}; // Assuming only lowercase characters
-
-    for (char c : a)
-        count[c - 'a']++;
-
-    for (char c : b) {
-        if (count[c - 'a'] == 0)
-            return false;
-        count[c - 'a']--;
     }
-
+    unordered_map<char, int> map;
+    for (int i = 0; i < a.length(); i++) {
+        map[a[i]]++;
+    }
+    for (int i = 0; i < b.length(); i++){
+        if (map.find(b[i]) != map.end()) 
+        {
+            map[b[i]] -= 1;
+        } 
+        else 
+        {
+            return false;
+        }
+    }
+    for (auto items : map)
+    {
+        if (items.second != 0)
+        {
+            return false;
+        }
+    }
     return true;
 }
-
 
 };
 
