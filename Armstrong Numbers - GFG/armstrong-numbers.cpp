@@ -8,27 +8,28 @@ using namespace std;
 class Solution {
   public:
     string armstrongNumber(int n){
-        int count=0;
-        int original=n;
-        int originalN=n;
-        int sum=0;
-        while (n>0){
-            int digit=n%10;
-            count++;
-           n=n/10;
-        }
-        for (int i=0;i<count;i++){
-            int remender = original%10;
-            sum= sum+pow(remender, count);
-            original=original/10;
-        }
-         if (sum == originalN) {
+    // Check if n is a positive integer
+    if (n <= 0) {
+        return "No";
+    }
+
+    int originalN = n;
+    int sum_of_cubes = 0;
+
+    // Calculate the sum of the cubes of digits
+    while (n > 0) {
+        int digit = n % 10;
+        sum_of_cubes += pow(digit, 3);
+        n /= 10;
+    }
+
+    // Check if it's an Armstrong number
+    if (sum_of_cubes == originalN) {
         return "Yes";
     } else {
         return "No";
     }
-     
-    }
+}
 };
 
 //{ Driver Code Starts.
