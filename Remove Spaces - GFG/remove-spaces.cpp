@@ -8,12 +8,19 @@ class Solution
   public:
     string modify (string s)
     {
+        int n=s.size();
         string result;
     
-    for (char c : s) {
-        if (c != ' ') {
-            result.push_back(c);
+    // for (char c : s) {
+    //     if (c != ' ') {
+    //         result.push_back(c);
+    //     }
+    // }
+    for (int i=0;i<n;i++){
+        if (s[i] != ' ') {
+            result.push_back(s[i]);
         }
+        
     }
     
     return result;
