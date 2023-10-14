@@ -10,7 +10,9 @@ using namespace std;
 class Solution{   
 public:
     pair<int, int> get(int a, int b){
-        swap(a,b);
+        int temp=a;
+        a=b;
+        b=temp;
         pair<int,int>result(a,b);
        return result;
     }
